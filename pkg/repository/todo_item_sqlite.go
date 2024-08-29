@@ -15,9 +15,9 @@ func NewTodoItemSqlite(db *sql.DB) *TodoItemSqlite {
 }
 
 func (r *TodoItemSqlite) Delete(itemId int) (int64, error) {
-	sql := "DELETE FROM tasks WHERE id = ?"
+	sqlQuery := "DELETE FROM tasks WHERE id = ?"
 
-	stmt, err := r.db.Prepare(sql)
+	stmt, err := r.db.Prepare(sqlQuery)
 
 	if err != nil {
 		panic(err)
@@ -33,9 +33,9 @@ func (r *TodoItemSqlite) Delete(itemId int) (int64, error) {
 }
 
 func (r *TodoItemSqlite) Create(item model.TodoItem) (int64, error) {
-	sql := "INSERT INTO tasks(title, description, done) VALUES(?, ?, ?)"
+	sqlQuery := "INSERT INTO tasks(title, description, done) VALUES(?, ?, ?)"
 
-	stmt, err := r.db.Prepare(sql)
+	stmt, err := r.db.Prepare(sqlQuery)
 	if err != nil {
 		panic(err)
 	}

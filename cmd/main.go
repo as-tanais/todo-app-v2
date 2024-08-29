@@ -8,13 +8,14 @@ import (
 )
 
 func main() {
+	//создаем сервер
 	srv := new(todo_app_v2.Server)
-
+	//создаем базу
 	db := repository.NewSqliteDb("db.db")
-
+	//создаем все зависимости последовательно
 	repos := repository.NewRepository(db)
 	services := service.NewService(repos)
 	handlers := handler.NewHandler(services)
-
+	//запускаем сервер на порту 8082
 	srv.Run("8082", handlers.InitRoutes())
 }
