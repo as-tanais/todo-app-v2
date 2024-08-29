@@ -1,4 +1,4 @@
-# Демо проект: Golang
+# Демо проект: ToDo APP, REST, Golang, SQLite
 
 ## Библиотеки:
 * github.com/mattn/go-sqlite3
