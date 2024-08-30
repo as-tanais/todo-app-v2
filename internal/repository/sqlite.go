@@ -26,6 +26,8 @@ func NewSqliteDb(filepath string) *sql.DB {
 }
 
 func migrate(db *sql.DB) {
+
+	//Создаем таблицу если ее нет.
 	sqlQuery := `
     CREATE TABLE IF NOT EXISTS tasks(
         id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -36,7 +38,7 @@ func migrate(db *sql.DB) {
     `
 
 	_, err := db.Exec(sqlQuery)
-	// выходим, если будут ошибки с SQL запросом выше
+
 	if err != nil {
 		panic(err)
 	}
