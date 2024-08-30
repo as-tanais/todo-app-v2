@@ -1,12 +1,16 @@
 package service
 
 import (
-	"todo-app-v2/pkg/model"
-	"todo-app-v2/pkg/repository"
+	"todo-app-v2/internal/model"
+	"todo-app-v2/internal/repository"
 )
 
 type TodoItemService struct {
 	repo repository.TodoItem
+}
+
+func (s *TodoItemService) GetById(itemId int) (model.TodoItem, error) {
+	return s.repo.GetById(itemId)
 }
 
 func (s *TodoItemService) Delete(itemId int) (int64, error) {

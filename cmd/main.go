@@ -2,9 +2,9 @@ package main
 
 import (
 	todo_app_v2 "todo-app-v2"
-	"todo-app-v2/pkg/handler"
-	"todo-app-v2/pkg/repository"
-	"todo-app-v2/pkg/service"
+	"todo-app-v2/internal/handler"
+	"todo-app-v2/internal/repository"
+	"todo-app-v2/internal/service"
 )
 
 func main() {

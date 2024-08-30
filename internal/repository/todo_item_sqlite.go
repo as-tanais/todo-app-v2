@@ -3,7 +3,7 @@ package repository
 import (
 	"database/sql"
 	"fmt"
-	"todo-app-v2/pkg/model"
+	"todo-app-v2/internal/model"
 )
 
 type TodoItemSqlite struct {
@@ -72,4 +72,23 @@ func (r *TodoItemSqlite) GetAll() ([]model.TodoItem, error) {
 	}
 
 	return items, nil
+}
+
+func (r *TodoItemSqlite) GetById(itemId int) (model.TodoItem, error) {
+	todo := model.TodoItem{}
+	query := `SELECT * FROM tasks WHERE id = ?`
+
+	rows, err := r.db.Query(query, itemId)
+	if err != nil {
+		panic(err)
+	}
+
+	for rows.Next() {
+		err2 := rows.Scan(&todo.Id, &todo.Title, &todo.Description, &todo.Done)
+		if err2 != nil {
+			panic(err2)
+		}
+	}
+
+	return todo, nil
 }
